@@ -16,7 +16,7 @@ def run_game():
 
         for events in pygame.event.get():
             if events.type == pygame.QUIT:
-                sy.sys.exit()
+                gf.sys.exit()
         
         screen.fill(sy.bg)
         ship.blitme()
