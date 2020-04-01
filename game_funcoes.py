@@ -10,7 +10,7 @@ def check_keydown_events(event, sy, screen, ship, bullets):
         ship.mov_l = True
     
     elif event.key == pygame.K_SPACE:
-        if len(bullets) < ai_settings.bullets_allowed:
+        if len(bullets) < sy.bullets_allowed:
             new_bullet = Bullet(sy, screen, ship)
             bullets.add(new_bullet)
 
