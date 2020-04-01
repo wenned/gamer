@@ -1,3 +1,3 @@
 # Alien envasion
 
-Exercicio de criação jogo Alien envision
+Exercicio de criação jogo Alien envasion
