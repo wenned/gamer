@@ -15,7 +15,7 @@ def run_game():
     while True:
         gf.check_events(sy, screen, ship, bullets)
         ship.update()
-        bullets.update()
+        gf.update_bullets(bullets)
         gf.update_screen(sy, screen, ship, bullets)
 
         for events in pygame.event.get():
@@ -25,5 +25,6 @@ def run_game():
         screen.fill(sy.bg)
         ship.blitme()
         pygame.display.flip()
+        
 
 run_game()
