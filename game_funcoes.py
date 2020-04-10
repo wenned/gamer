@@ -64,23 +64,34 @@ def update_bullets(bullets):
     bullets.update()
 
 def get_num_ali_x(sy, alien_width):
+    
     available_sp_x = sy.screen_w - 2 * alien_width
     num_ali_x = int(available_sp_x / (1.8 * alien_width))
     return num_ali_x
 
 
-def creat_alien(sy, screen, aliens, alien_nu):
+def creat_alien(sy, screen, aliens, alien_nu, row_number):
+    
     alien = Alien(sy, screen)
     alien_w = alien.rect.width
     alien.x = alien_w + 2 * alien_w * alien_nu
     alien.rect.x = alien.x
+    alien.rect.y = alien.rect.height + 2 * alien.rect.height * row_number
     aliens.add(alien)
 
-def creat_fleet(sy, screen, aliens):
+def creat_fleet(sy, screen, ship, aliens):
+    
     alien = Alien(sy, screen)
     number_ali_x = get_num_ali_x(sy, alien.rect.width)
+    number_rows = get_nu_rows(sy, ship.rect.height, alien.rect.height)
+    
+    for row_number in range(number_rows):
+        for alien_n in range(number_ali_x):
+            creat_alien(sy, screen, aliens, alien_n, row_number)
 
-    for alien_n in range(number_ali_x):
-        creat_alien(sy, screen, aliens, alien_n)
-
+def get_nu_rows(sy, ship_h, alien_h):
+    
+    available_sp_y = (sy.screen_h -(3* alien_h) - ship_h)
+    number_rows = int(available_sp_y / (2* alien_h))
+    return number_rows
 
