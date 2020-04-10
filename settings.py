@@ -12,5 +12,9 @@ class Settings():
         self.bullet_width = 4
         self.bullet_height = 15
         self.bullet_color = 90, 60, 70
-        self.bullets_allowed = 3       
+        self.bullets_allowed = 3      
+
+        # configuração dos alieniginas
+
+        self.alien_speed = 1
 

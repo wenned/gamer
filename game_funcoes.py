@@ -3,7 +3,9 @@ import pygame
 from bullet import Bullet
 from alien import Alien
 
+
 def check_keydown_events(event, sy, screen, ship, bullets):
+    
     if event.key == pygame.K_RIGHT:
         ship.mov_r = True
 
@@ -45,6 +47,7 @@ def check_events(sy, screen, ship, bullets):
 
 
 def update_screen(settings, screen, ship, aliens, bullets):
+    
     screen.fill(settings.bg)
     
     for bullet in bullets.sprites():
@@ -94,4 +97,8 @@ def get_nu_rows(sy, ship_h, alien_h):
     available_sp_y = (sy.screen_h -(3* alien_h) - ship_h)
     number_rows = int(available_sp_y / (2* alien_h))
     return number_rows
+
+def update_aliens(aliens):
+    
+    aliens.update()
 
