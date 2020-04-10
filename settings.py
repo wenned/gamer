@@ -17,4 +17,5 @@ class Settings():
         # configuração dos alieniginas
 
         self.alien_speed = 1
-
+        self.fleet_drop = 10
+        self.fleet_direction = 1
