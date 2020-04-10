@@ -52,7 +52,6 @@ def update_screen(settings, screen, ship, aliens, bullets):
 
     ship.blitme()
     aliens.draw(screen)
-    #alien.blitme()
     
     pygame.display.flip()
 
@@ -66,7 +65,7 @@ def update_bullets(bullets):
 
 def get_num_ali_x(sy, alien_width):
     available_sp_x = sy.screen_w - 2 * alien_width
-    num_ali_x = int(available_sp_x / (2 * alien_width))
+    num_ali_x = int(available_sp_x / (1.8 * alien_width))
     return num_ali_x
 
 
@@ -83,4 +82,5 @@ def creat_fleet(sy, screen, aliens):
 
     for alien_n in range(number_ali_x):
         creat_alien(sy, screen, aliens, alien_n)
+
 
