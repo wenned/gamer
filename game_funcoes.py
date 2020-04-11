@@ -58,12 +58,14 @@ def update_screen(settings, screen, ship, aliens, bullets):
     
     pygame.display.flip()
 
-def update_bullets(bullets):
+def update_bullets(aliens, bullets):
 
     for bullet in bullets.copy():
         if bullet.rect.bottom <= 0:
             bullets.remove(bullet)
-   
+    
+    collisions = pygame.sprite.groupcollide(bullets, aliens, True, True)
+
     bullets.update()
 
 def get_num_ali_x(sy, alien_width):
@@ -71,7 +73,6 @@ def get_num_ali_x(sy, alien_width):
     available_sp_x = sy.screen_w - 2 * alien_width
     num_ali_x = int(available_sp_x / (1.8 * alien_width))
     return num_ali_x
-
 
 def creat_alien(sy, screen, aliens, alien_nu, row_number):
     
