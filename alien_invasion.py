@@ -18,7 +18,7 @@ def run_game():
 
         gf.check_events(sy, screen, ship, bullets)
         ship.update()
-        gf.update_bullets(aliens, bullets)
+        gf.update_bullets(sy, screen, ship, aliens, bullets)
         gf.update_aliens(sy, aliens)
         gf.update_screen(sy, screen, ship, aliens, bullets)
         
