@@ -98,7 +98,25 @@ def get_nu_rows(sy, ship_h, alien_h):
     number_rows = int(available_sp_y / (2* alien_h))
     return number_rows
 
-def update_aliens(aliens):
+def update_aliens(sy, aliens):
     
+    fleet_edges(sy, aliens)
     aliens.update()
+
+def fleet_edges(sy, aliens):
+
+    for alien in aliens.sprites():
+        if alien.check_edges():
+            change_fleet_direction(sy, aliens)
+            break
+
+def change_fleet_direction(sy, aliens):
+
+    for alien in aliens.sprites():
+        alien.rect.y += sy.fleet_drop
+    sy.fleet_direction *= -1
+
+
+
+
 

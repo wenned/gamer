@@ -19,7 +19,7 @@ def run_game():
         gf.check_events(sy, screen, ship, bullets)
         ship.update()
         gf.update_bullets(bullets)
-        gf.update_aliens(aliens)
+        gf.update_aliens(sy, aliens)
         gf.update_screen(sy, screen, ship, aliens, bullets)
         
         for events in pygame.event.get():
