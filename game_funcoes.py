@@ -1,4 +1,5 @@
 import sys
+from time import sleep
 import pygame
 from bullet import Bullet
 from alien import Alien
@@ -64,6 +65,10 @@ def update_bullets(sy, screen, ship, aliens, bullets):
         if bullet.rect.bottom <= 0:
             bullets.remove(bullet)
     
+    check_bullet_alien_collision(sy, screen, ship, aliens, bullets)
+
+def check_bullet_alien_collision(sy, screen, ship, aliens, bullets):
+
     collisions = pygame.sprite.groupcollide(bullets, aliens, True, True)
     
     if len(aliens) == 0:
@@ -103,10 +108,13 @@ def get_nu_rows(sy, ship_h, alien_h):
     number_rows = int(available_sp_y / (2* alien_h))
     return number_rows
 
-def update_aliens(sy, aliens):
+def update_aliens(sy, stats, screen, ship, aliens, bullets):
     
     fleet_edges(sy, aliens)
     aliens.update()
+    
+    if pygame.sprite.spritecollideany(ship, aliens):
+        ship_hit(sy, stats, screen, ship, aliens, bullets)
 
 def fleet_edges(sy, aliens):
 
@@ -120,5 +128,16 @@ def change_fleet_direction(sy, aliens):
     for alien in aliens.sprites():
         alien.rect.y += sy.fleet_drop
     sy.fleet_direction *= -1
+
+def ship_hit(sy, stats, screen, ship, aliens, bullets):
+    
+    stats.ships_l -= 1
+
+    aliens.empty()
+    bullets.empty()
+
+    creat_fleet(sy, screen, ship, aliens) 
+    ship.center_ship()
+    sleep(0.5)
 
 

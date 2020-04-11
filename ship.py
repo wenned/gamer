@@ -16,7 +16,8 @@ class Ship:
                 
         self.c = float(self.rect.centerx)
 
-        #flag de movimento
+        # flag de movimento
+
         self.mov_r = False
         self.mov_l = False
 
@@ -31,4 +32,9 @@ class Ship:
     
     def blitme(self):
         self.screen.blit(self.image, self.rect)
+    
+    def center_ship(self):
+
+        self.center =  self.screen_r.centerx
+
 

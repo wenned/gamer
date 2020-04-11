@@ -4,11 +4,12 @@ class Settings():
         self.screen_w = 900
         self.screen_h = 700
         self.bg = (230,230,230)
-        self.ship_speed = 1.5
+        self.ship_speed = 3
+        self.ship_l = 3
 
         #   configuração dos projeteis
          
-        self.bullet_speed_factor = 2
+        self.bullet_speed_factor = 3
         self.bullet_width = 3
         self.bullet_height = 15
         self.bullet_color = 90, 60, 70
