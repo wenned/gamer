@@ -5,6 +5,29 @@ from bullet import Bullet
 from alien import Alien
 
 
+            
+def check_events(sy, screen, stats, play_button, ship, bullets):
+    
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            sys.exit()
+       
+        elif event.type == pygame.MOUSEBUTTONDOWN:
+            mouse_x, mouse_y = pygame.mouse.get_pos()
+            check_play_button(stats, play_button, mouse_x, mouse_y)
+
+
+        elif event.type == pygame.KEYDOWN:
+            check_keydown_events(event, sy, screen, ship, bullets)
+
+        elif event.type == pygame.KEYUP:
+            check_keyup_events(event, sy, screen, ship, bullets)
+
+def check_play_button(stats, play_button, mouse_x, mouse_y):
+    
+    if play_button.rect.collidepoint(mouse_x, mouse_y):
+        stats.game_active = True
+
 def check_keydown_events(event, sy, screen, ship, bullets):
     
     if event.key == pygame.K_RIGHT:
@@ -19,12 +42,6 @@ def check_keydown_events(event, sy, screen, ship, bullets):
     elif event.key == pygame.K_q:
         sys.exit()
  
-def fire_bullet(sy, screen, ship, bullets):
-        
-    if len(bullets) < sy.bullets_allowed:
-        new_bullet = Bullet(sy, screen, ship)
-        bullets.add(new_bullet)
-
 def check_keyup_events(event, sy, screen, ship, bullets):
 
     if event.key == pygame.K_RIGHT:
@@ -32,20 +49,12 @@ def check_keyup_events(event, sy, screen, ship, bullets):
 
     elif event.key == pygame.K_LEFT:
         ship.mov_l = False
-            
-def check_events(sy, screen, ship, bullets):
-    
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            sys.exit()
-       
-        elif event.type == pygame.KEYDOWN:
-            check_keydown_events(event, sy, screen, ship, bullets)
 
-        elif event.type == pygame.KEYUP:
-            check_keyup_events(event, sy, screen, ship, bullets)
-
-
+def fire_bullet(sy, screen, ship, bullets):
+        
+    if len(bullets) < sy.bullets_allowed:
+        new_bullet = Bullet(sy, screen, ship)
+        bullets.add(new_bullet)
 
 def update_screen(sy, screen, stats, ship, aliens, bullets, play_button):
     
