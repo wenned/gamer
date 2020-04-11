@@ -19,10 +19,12 @@ def run_game():
     while True:
 
         gf.check_events(sy, screen, ship, bullets)
-        ship.update()
-        gf.update_bullets(sy, screen, ship, aliens, bullets)
-        gf.update_aliens(sy, stats, screen, ship, aliens, bullets)
-        gf.update_screen(sy, screen, ship, aliens, bullets)
+        
+        if stats.game_active:
+            ship.update()
+            gf.update_bullets(sy, screen, ship, aliens, bullets)
+            gf.update_aliens(sy, stats, screen, ship, aliens, bullets)
+            gf.update_screen(sy, screen, ship, aliens, bullets)
         
         for events in pygame.event.get():
             if events.type == pygame.QUIT:
