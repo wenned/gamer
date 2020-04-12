@@ -12,7 +12,7 @@ def run_game():
     screen = pygame.display.set_mode((sy.screen_w, sy.screen_h))
     pygame.display.set_caption('Alien Invasion')
     play_button = Button(sy, screen, 'Play')
-    stats = GameStats(sy,)
+    stats = GameStats(sy)
     ship = Ship(sy, screen)
     bullets = Group()
     aliens = Group()
@@ -20,7 +20,7 @@ def run_game():
     
     while True:
 
-        gf.check_events(sy, screen, stats, play_button, ship, bullets)
+        gf.check_events(sy, screen, stats, play_button, ship, aliens, bullets)
       
         if stats.game_active:
             ship.update()
