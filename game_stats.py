@@ -9,4 +9,5 @@ class GameStats():
     def reset_stats(self):
 
         self.ships_l = self.sy.ship_l
+        self.score = 0
 

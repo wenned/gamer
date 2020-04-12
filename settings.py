@@ -10,7 +10,7 @@ class Settings():
 
         #   configuração dos projeteis
          
-        self.bullet_speed_factor = 3
+        self.bullet_speed_factor = 1.5
         self.bullet_width = 3
         self.bullet_height = 15
         self.bullet_color = 90, 60, 70
@@ -18,10 +18,10 @@ class Settings():
 
         # configuração dos alieniginas
         
-        self.alien_speed = 1
+        self.alien_speed = 3
         self.speed_scale = 1.1
         self.fleet_drop = 10
-        self.fleet_direction = 1
+        self.fleet_direction = 1.1
        
         self.speedup_scale = 1.5
 

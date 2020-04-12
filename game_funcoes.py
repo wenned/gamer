@@ -71,7 +71,7 @@ def fire_bullet(sy, screen, ship, bullets):
         new_bullet = Bullet(sy, screen, ship)
         bullets.add(new_bullet)
 
-def update_screen(sy, screen, stats, ship, aliens, bullets, play_button):
+def update_screen(sy, screen, stats, sb, ship, aliens, bullets, play_button):
     
     screen.fill(sy.bg)
     
@@ -81,6 +81,8 @@ def update_screen(sy, screen, stats, ship, aliens, bullets, play_button):
     ship.blitme()
     aliens.draw(screen)
     
+    sb.show_score()   # desenha a informação sobre a pontuação
+
     if not stats.game_active:
         play_button.draw_button()
 
