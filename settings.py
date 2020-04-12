@@ -24,7 +24,8 @@ class Settings():
         self.fleet_direction = 1.1
        
         self.speedup_scale = 1.5
-        self.score_scale = 1.5        
+        self.score_scale = 1.5       
+
         # pontuação
 
         self.alien_points = 50

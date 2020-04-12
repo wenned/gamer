@@ -107,6 +107,8 @@ def check_bullet_alien_collision(sy, screen,stats, sb, ship, aliens, bullets):
             stats.score += sy.alien_points * len(aliens)
             sb.prep_score()
         
+        check_high_score(stats, sb)
+
     if len(aliens) == 0:
         bullets.empty()
         sy.increase_speed()
@@ -192,3 +194,10 @@ def ship_hit(sy, stats, screen, ship, aliens, bullets):
     else:
         stats.game_active = False
         pygame.mouse.set_visible(True)
+
+def check_high_score(stats, sb):
+
+    if stats.score > stats.high_score:
+        stats.high_score = stats.score
+        sb.prep_high_score()
+
