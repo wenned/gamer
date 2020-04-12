@@ -89,18 +89,24 @@ def update_screen(sy, screen, stats, sb, ship, aliens, bullets, play_button):
 
     pygame.display.flip()
 
-def update_bullets(sy, screen, ship, aliens, bullets):
+def update_bullets(sy, screen, stats, sb, ship, aliens, bullets):
 
     for bullet in bullets.copy():
         if bullet.rect.bottom <= 0:
             bullets.remove(bullet)
     
-    check_bullet_alien_collision(sy, screen, ship, aliens, bullets)
+    check_bullet_alien_collision(sy, screen, stats, sb, ship, aliens, bullets)
 
-def check_bullet_alien_collision(sy, screen, ship, aliens, bullets):
+def check_bullet_alien_collision(sy, screen,stats, sb, ship, aliens, bullets):
 
     collisions = pygame.sprite.groupcollide(bullets, aliens, True, True)
     
+    if collisions:
+        
+        for aliens in collisions.values():
+            stats.score += sy.alien_points * len(aliens)
+            sb.prep_score()
+        
     if len(aliens) == 0:
         bullets.empty()
         sy.increase_speed()
