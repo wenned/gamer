@@ -8,6 +8,7 @@ class GameStats():
         
         # Pontuação
         self.high_score =  0
+        self.level = 1
 
     def reset_stats(self):
 
