@@ -38,9 +38,11 @@ def check_play_button(sy, screen, stats, sb, play_button, ship, aliens, bullets,
         stats.game_active = True
         
         # reinicia as imagem painel pontuação
+        
         sb.prep_score()
         sb.prep_high_score()
         sb.prep_level()
+        sb.prep_ships()
 
         aliens.empty()
         bullets.empty()
@@ -155,24 +157,24 @@ def get_nu_rows(sy, ship_h, alien_h):
     number_rows = int(available_sp_y / (2* alien_h))
     return number_rows
 
-def check_aliens_bottom(sy, stats, screen, ship, aliens, bullets):
+def check_aliens_bottom(sy, screen, stats, sb, ship, aliens, bullets):
 
     screen_rect = screen.get_rect()
 
     for alien in aliens.sprites():
         if alien.rect.bottom >= screen_rect.bottom:
-            ship_hit(sy, stats, screen, ship, aliens, bullets)
+            ship_hit(sy, screen, stats, sb, screen, ship, aliens, bullets)
             break
 
-def update_aliens(sy, stats, screen, ship, aliens, bullets):
+def update_aliens(sy, screen, stats, sb, ship, aliens, bullets):
     
     fleet_edges(sy, aliens)
     aliens.update()
     
     if pygame.sprite.spritecollideany(ship, aliens):
-        ship_hit(sy, stats, screen, ship, aliens, bullets)
+        ship_hit(sy, screen, stats, sb, ship, aliens, bullets)
     
-    check_aliens_bottom(sy, stats, screen, ship, aliens, bullets)
+    check_aliens_bottom(sy, screen, stats, sb, ship, aliens, bullets)
 
 def fleet_edges(sy, aliens):
 
@@ -187,14 +189,16 @@ def change_fleet_direction(sy, aliens):
         alien.rect.y += sy.fleet_drop
     sy.fleet_direction *= -1
 
-def ship_hit(sy, stats, screen, ship, aliens, bullets):
+def ship_hit(sy, screen, stats, sb, ship, aliens, bullets):
     
     if stats.ships_l > 0:
         stats.ships_l -= 1
-
+        
+        sb.prep_ships()
+        
         aliens.empty()
         bullets.empty()
-
+        
         creat_fleet(sy, screen, ship, aliens) 
         ship.center_ship()
         sleep(0.5)
