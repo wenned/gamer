@@ -5,7 +5,7 @@ class Settings():
         self.screen_w = 900
         self.screen_h = 600
         self.bg = (230,230,230)
-        self.ship_speed = 3
+        self.ship_speed = 2
         self.ship_l = 3
 
         #   configuração dos projeteis
@@ -18,7 +18,7 @@ class Settings():
 
         # configuração dos alieniginas
         
-        self.alien_speed = 3
+        self.alien_speed = 1.1
         self.speed_scale = 1.1
         self.fleet_drop = 10
         self.fleet_direction = 1.1
