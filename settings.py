@@ -5,8 +5,8 @@ class Settings():
         self.screen_w = 900
         self.screen_h = 600
         self.bg = (230,230,230)
-        self.ship_speed = 2
-        self.ship_l = 3
+        self.ship_speed = 1.5
+        self.ship_l = 1
 
         #   configuração dos projeteis
          
@@ -34,8 +34,8 @@ class Settings():
 
     def initialize_dynamic_settings(self):
         
-        self.alien_speed = 1.5
-        self.bullet_speed_factor = 3
+        self.alien_speed = 1
+        self.bullet_speed_factor = 1
         self.alien_speed_factor = 1
         self.fleet_direction = 1
 
